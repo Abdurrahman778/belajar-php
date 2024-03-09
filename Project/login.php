@@ -1,29 +1,29 @@
 <?php 
     session_start();
 
-    // data pengguna yang valid
+    // valid user data
     $valid_user = 'rahman';
     $valid_password = '3456';
 
-    // batasan percobaan login
+    // login attempt limit
     $attempt_limit = 3;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        // validasi login
+        // login validation
         if ($username === $valid_user && $password === $valid_password) {
             $_SESSION['username'] = $username;
-        header('Location: https://instagram.com/rahmannn_778'); // Redirect ke halaman index setelah login sukses
+            header('Location: default_page/home.php'); // Redirect page if the login succeed
         exit;
         } else {
-            // menghitung percobaan login
+            // count login attempts
             $_SESSION['login_attempts'] = ($_SESSION['login_attempts'] ?? 0) + 1;
 
             $remaining_attempts = $attempt_limit - ($_SESSION['login_attempts'] ?? 0);
 
-            // mencegah login jika melebihi batas
+            // prevent login if the limit is exceeded
 
             if ($remaining_attempts <= 0) {
                 $error_message = 'percobaan login anda terlalu banyak. coba lagi nanti';

@@ -35,7 +35,8 @@ if (@$_POST["bilangan_pertama"] != "" && @$_POST["bilangan_pangkat"] != "") {
 
     <p style="text-align: center;">
         <?php
-            if (isset($hasilPangkat) && @$_POST['bilangan_pertama'] != "" && @$_POST ['bilangan_pangkat'] != "") {
+            if (isset($hasilPangkat) && @$_POST['bilangan_pertama'] != "" && @$_POST ['bilangan_pangkat'] != "")
+             {
                 echo "<b>hasil pangkat : </b>" . 
                 $_POST['bilangan_pertama'] . " pangkat " . $_POST['bilangan_pangkat'] . " = " . $hasilPangkat . "<b>";
             }
